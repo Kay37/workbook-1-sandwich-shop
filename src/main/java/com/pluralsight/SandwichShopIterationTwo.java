@@ -44,10 +44,10 @@ public class SandwichShopIterationTwo {
         ///that counts as a True. If it does not match, that counts as a false.
         boolean isLoaded = loadedChoice.equalsIgnoreCase("yes");
 
-        ///select the sandwich and its price
+        ///created variable from selection of the sandwich and its price for simplified calculation later
         double finalCost;
 
-        ///if statements with conditions and alternatives if they choose the Regular size,
+        /// if/else & elseif statements with conditions and alternatives if they choose the Regular size,
         ///The Large size, loaded (additional cost), or otherwise.
         if (sizeChoice.equalsIgnoreCase("Regular")) {
             finalCost = regularCost;
@@ -72,7 +72,7 @@ public class SandwichShopIterationTwo {
             return;
         }
 
-        ///if/else for if they chose a loaded sandwich or not.
+        /// if/else for if they chose a loaded sandwich or not.
         if (isLoaded) {
             if (sizeChoice.equalsIgnoreCase("Regular")) {
             finalCost += 1.00;
@@ -87,6 +87,7 @@ public class SandwichShopIterationTwo {
         int userAge = theScanner.nextInt();
 
         ///if statements with conditions and alternatives depending on if they receive a discount
+        ///Using *= in place of finalCost = finalCost
         if (userAge <= 17) {
             finalCost *= .90;
             System.out.println("You received a 10% discount!");
