@@ -35,25 +35,55 @@ public class SandwichShopIterationTwo {
         System.out.printf("What size %ssandwich%s would you like? : ", green, reset);
         String sizeChoice = theScanner.nextLine();
 
+        ///Asking the user if they want their sandwich loaded (yes/no) or not, and storing their answer.
+        System.out.printf("Would you like your %ssandwich%s loaded? (yes/no) : ", green, reset);
+        String loadedChoice = theScanner.nextLine();
+        ///For some reason this line really confused me and it was difficult to figure out.
+        ///I'm creating a boolean called isLoaded that stores either true or false. The right side checks whether the
+        ///text the user entered on line 40 matches the word "yes" regardless of capitalization. If it does match,
+        ///that counts as a True. If it does not match, that counts as a false.
+        boolean isLoaded = loadedChoice.equalsIgnoreCase("yes");
+
         ///select the sandwich and its price
         double finalCost;
 
         ///if statements with conditions and alternatives if they choose the Regular size,
-        ///The Large size, or otherwise.
+        ///The Large size, loaded (additional cost), or otherwise.
         if (sizeChoice.equalsIgnoreCase("Regular")) {
             finalCost = regularCost;
-            System.out.printf("You have chosen a Regular sized %ssandwich%s!%n", green, reset);
+
+            if (isLoaded) {
+                System.out.printf("You have chosen a Regular sized and loaded %ssandwich%s!%n", green, reset);
+            } else {
+                System.out.printf("You have chosen a Regular sized %ssandwich%s!%n", green, reset);
+            }
         } else if (sizeChoice.equalsIgnoreCase("Large")) {
             finalCost = largeCost;
-            System.out.printf("You have chosen a Large sized %ssandwich%s!%n", green, reset);
+
+            if (isLoaded) {
+                System.out.printf("You have chosen a Large sized and loaded %ssandwich%s!%n", green, reset);
+            } else {
+                System.out.printf("You have chosen a Large sized %ssandwich%s!%n", green, reset);
+            }
 
         } else {
             System.out.println("You have chosen something not available. Please try again.");
             theScanner.close();
             return;
         }
+
+        ///if/else for if they chose a loaded sandwich or not.
+        if (isLoaded) {
+            if (sizeChoice.equalsIgnoreCase("Regular")) {
+            finalCost += 1.00;
+
+        }else if (sizeChoice.equalsIgnoreCase("Large")) {
+            finalCost += 1.75;
+
+        }
+        }
         ///Prompting the user for their age, for discounts.
-        System.out.println("Please provide your age for possible discount eligibility: ");
+        System.out.print("Please provide your age (numerical value) for possible discount eligibility: ");
         int userAge = theScanner.nextInt();
 
         ///if statements with conditions and alternatives depending on if they receive a discount
@@ -69,5 +99,5 @@ public class SandwichShopIterationTwo {
         System.out.printf("Your final charge is $%.2f%n", finalCost);
 
         theScanner.close();
-    }
-}
+    } /// main method bracket
+} /// class bracket
